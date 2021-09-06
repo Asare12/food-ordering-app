@@ -30,7 +30,7 @@ import {
             error.response.data.message) ||
           error.message ||
           error.toString();
-  
+//        console.log("error message",error);
         dispatch({
           type: REGISTER_FAIL,
         });
