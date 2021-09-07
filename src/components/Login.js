@@ -3,8 +3,6 @@ import Form from "react-validation/build/form";
 import Input from "react-validation/build/input";
 import CheckButton from "react-validation/build/button";
 
-import { isEmail } from "validator";
-
 import React, { useState, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from 'react-router-dom';
@@ -80,13 +78,6 @@ const Login = (props) => {
           <h2>Sign in</h2>
           <label>
               <span>Email Address</span>
-              {/* <input 
-              type='email' 
-              name='email'
-              value={values.email}
-              onChange={handleChange}
-              />
-              {errors.email && <p>{errors.email}</p>} */}
               <Input
               type="email"
               name="username"
@@ -97,13 +88,6 @@ const Login = (props) => {
           </label>
           <label>
               <span>Password</span>
-              {/* <input 
-              type='password' 
-              name='password'
-              name="password"
-              value={values.password}
-              onChange={handleChange}/>
-              {errors.password && <p>{errors.password}</p>} */}
               <Input
               type="password"
               name="password"

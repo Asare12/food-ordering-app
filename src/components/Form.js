@@ -21,8 +21,6 @@ const Form = () => {
         {!isLogginActive && <Login />}
         <div class="sub-cont">
         <SubCont current={current} onClick={toggleClass}/>
-        {/* {isLogginActive && <SignUp />} */}
-        {/* {isLogginActive && <SignUp submitForm={submitForm}/>} */}
         {isLogginActive && !isSubmitted ? <SignUp submitForm={submitForm} /> : <FormSuccess />}
         </div>
       </div>
