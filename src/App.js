@@ -3,7 +3,6 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
-//import Navigationbar from "./components/Navigationbar";
 import Footer from "./components/Footer";
 import Menu from "./components/Menu";
 import AboutUs from "./components/AboutUs";
