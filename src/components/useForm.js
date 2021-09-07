@@ -33,18 +33,15 @@ const useForm = (callback, validate) => {
       console.log("submitted form");
       setIsSubmitting(true);
       window.location.reload();
-      console.log(isSubmitting);
     })        
     .catch(() => {
       console.log("couldnt submit form");
       setIsSubmitting(false);
     });
-    //setIsSubmitting(true);
   };
 
   useEffect(() => {
     if(Object.keys(errors).length === 0 && isSubmitting){
-      
       callback(); 
     }
     console.log(JSON.stringify(values, null, 2));
