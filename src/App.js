@@ -11,6 +11,7 @@ import ContactUs from "./components/ContactUs";
 import NotFound from "./components/NotFound";
 import Form from "./components/Form";
 import Profile from "./components/Profile";
+import AddCategory from "./components/AddCategory"
 
 import BoardUser from "./components/BoardUser";
 import BoardAdmin from "./components/BoardAdmin";
@@ -18,9 +19,12 @@ import BoardAdmin from "./components/BoardAdmin";
 import { logout } from "./actions/auth";
 import { clearMessage } from "./actions/message";
 import { history } from "./helpers/history";
+import CategoryDataService from "./services/category.service";
+
 
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
+import NavDropdown from 'react-bootstrap/NavDropdown'
 import "./componentsCss/Navigationbar.css";
 
 import { LinkContainer } from "react-router-bootstrap";
@@ -28,9 +32,24 @@ import { LinkContainer } from "react-router-bootstrap";
 
 function App() {
   const [showAdminBoard, setShowAdminBoard] = useState(false);
+  const [categories, setCategories] = useState([]);
 
   const { user: currentUser } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    retrieveCategory();
+  }, []);
+
+  const retrieveCategory = () => {
+    CategoryDataService.getAll()
+    .then((response) => {
+      setCategories(response.data);
+    })
+    .catch((e) => {
+        console.log(e);
+    });
+  };
 
   useEffect(() => {
     history.listen((location) => {
@@ -65,15 +84,30 @@ function App() {
               </Nav.Item>
             </LinkContainer>
             <LinkContainer to="/menu">
-              <Nav.Item>
-                <Nav.Link href="/" className="custom-nav-link">
-                  Menu
-                </Nav.Link>
-              </Nav.Item>
+              <NavDropdown title="Menu" id="navbarScrollingDropdown" className="custom-nav-link">
+              {showAdminBoard && (<LinkContainer to="/addCategory"><NavDropdown.Item>Add</NavDropdown.Item></LinkContainer>)}
+                {categories && categories.map((category) =>
+                <NavDropdown.Item href="#action4">{category.name}</NavDropdown.Item>
+                
+                )}
+                {/* <NavDropdown.Item href="#action4">Another action</NavDropdown.Item>
+                <NavDropdown.Divider />
+                <NavDropdown.Item href="#action5">
+                  Something else here
+                </NavDropdown.Item> */}
+            </NavDropdown>
             </LinkContainer>
+            {/* <NavDropdown title="Link" id="navbarScrollingDropdown" className="custom-nav-link">
+            <LinkContainer to="/addCategory"><NavDropdown.Item>Add</NavDropdown.Item></LinkContainer>
+                <NavDropdown.Item href="#action4">Another action</NavDropdown.Item>
+                <NavDropdown.Divider />
+                <NavDropdown.Item href="#action5">
+                  Something else here
+                </NavDropdown.Item>
+            </NavDropdown> */}
             <LinkContainer to="/cart">
               <Nav.Item>
-                <Nav.Link href="/" className="custom-nav-link">
+                <Nav.Link className="custom-nav-link">
                   My Cart
                 </Nav.Link>
               </Nav.Item>
@@ -150,7 +184,7 @@ function App() {
         <Route exact path="/profile" component={Profile} />
         <Route path="/user" component={BoardUser} />
         <Route path="/admin" component={BoardAdmin} />
-
+        <Route exact path="/addCategory" component={AddCategory} />
         <Route component={NotFound} />
       </Switch>
       <Footer />
