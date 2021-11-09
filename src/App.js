@@ -88,23 +88,9 @@ function App() {
               {showAdminBoard && (<LinkContainer to="/addCategory"><NavDropdown.Item>Add</NavDropdown.Item></LinkContainer>)}
                 {categories && categories.map((category) =>
                 <NavDropdown.Item href="#action4">{category.name}</NavDropdown.Item>
-                
                 )}
-                {/* <NavDropdown.Item href="#action4">Another action</NavDropdown.Item>
-                <NavDropdown.Divider />
-                <NavDropdown.Item href="#action5">
-                  Something else here
-                </NavDropdown.Item> */}
             </NavDropdown>
             </LinkContainer>
-            {/* <NavDropdown title="Link" id="navbarScrollingDropdown" className="custom-nav-link">
-            <LinkContainer to="/addCategory"><NavDropdown.Item>Add</NavDropdown.Item></LinkContainer>
-                <NavDropdown.Item href="#action4">Another action</NavDropdown.Item>
-                <NavDropdown.Divider />
-                <NavDropdown.Item href="#action5">
-                  Something else here
-                </NavDropdown.Item>
-            </NavDropdown> */}
             <LinkContainer to="/cart">
               <Nav.Item>
                 <Nav.Link className="custom-nav-link">
