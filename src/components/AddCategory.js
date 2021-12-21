@@ -1,7 +1,5 @@
 import React, { useState } from "react";
 import CategoryDataService from "../services/category.service";
-import Form from 'react-bootstrap/Form'
-import Button from 'react-bootstrap/Button'
 import { Container } from "react-bootstrap";
 import "../componentsCss/CategoryForm.css";
 
@@ -43,20 +41,6 @@ const AddCategory = () => {
   };
 
   return (
-    // <Form>
-
-    //   <Form.Group className="mb-3" controlId="formBasicEmail">
-    //     <Form.Label>Email address</Form.Label>
-    //     <Form.Control type="email" placeholder="Enter email" />
-    //     <Form.Text className="text-muted">
-    //       We'll never share your email with anyone else.
-    //     </Form.Text>
-    //   </Form.Group>
-    //   <Button variant="primary" type="submit">
-    //     Submit
-    //   </Button>
-    // </Form>
-
     <Container>
         <h1 style={{textAlign: "center", marginTop: "5%"}}> Create New Category</h1>
         <div className="addCategoryForm">

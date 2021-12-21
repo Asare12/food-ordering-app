@@ -1,5 +1,5 @@
 import "./App.css";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect} from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
@@ -21,7 +21,6 @@ import { clearMessage } from "./actions/message";
 import { history } from "./helpers/history";
 import CategoryDataService from "./services/category.service";
 
-
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
 import NavDropdown from 'react-bootstrap/NavDropdown'
@@ -33,7 +32,6 @@ import { LinkContainer } from "react-router-bootstrap";
 function App() {
   const [showAdminBoard, setShowAdminBoard] = useState(false);
   const [categories, setCategories] = useState([]);
-
   const { user: currentUser } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
 
