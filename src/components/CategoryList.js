@@ -1,13 +1,9 @@
 import React, { useState, useEffect, useMemo, useRef } from "react";
 import { useTable } from "react-table";
 import CategoryDataService from "../services/category.service";
-// import { LinkContainer } from "react-router-bootstrap";
-// import Nav from "react-bootstrap/Nav";
 
 const CategoryList = (props) => {
   const [categories, setCategories] = useState([]);
-  //const [currentCategory, setCurrentCategory] = useState(null);
-  //const [currentIndex, setCurrentIndex] = useState(-1);
   const [searchCategory, setSearchCategory] = useState("");
   const categoryRef = useRef();
 
@@ -34,8 +30,6 @@ const CategoryList = (props) => {
 
   const refreshList = () => {
     retrieveCategory();
-    //setCurrentCategory(null);
-    //setCurrentIndex(-1);
   };
 
   const removeAllCategories = () => {
