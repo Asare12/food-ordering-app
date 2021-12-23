@@ -5,7 +5,6 @@ import Nav from "react-bootstrap/Nav";
 import CategoryDataService from "../services/category.service";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEdit, faTrash } from "@fortawesome/free-solid-svg-icons";
-import { Link } from "react-router-dom";
 
 const CategoryList = (props) => {
   const [categories, setCategories] = useState([]);
@@ -58,22 +57,6 @@ const CategoryList = (props) => {
       });
   };
 
-  const openCategory = (rowIndex) => {
-    console.log("rowIndex", rowIndex);
-    const id = categoryRef.current[rowIndex].id;
-    return (
-    <Link to={"/admin/category/" + id}> </Link>
-    //   <LinkContainer to={"/admin/category/" + id}>
-    //     <Nav.Item>
-    //       <Nav.Link href="/" />
-    //     </Nav.Item>
-    //   </LinkContainer>
-    );
-    //console.log('push', props.history.push("/admin/category/" + id));
-    // const { history } = this.props;
-    // history.push("/category/" + id);
-  };
-
   const deleteCategory = (rowIndex) => {
     const id = categoryRef.current[rowIndex].id;
 
@@ -108,19 +91,7 @@ const CategoryList = (props) => {
           const rowIdx = props.row.id;
           return (
             <div>
-              {/* <span onClick={() => openCategory(rowIdx)}>
-                <FontAwesomeIcon
-                  icon={faEdit}
-                  className="action mr-2"
-                ></FontAwesomeIcon>
-              </span> */}
-
-            {/* <Link to={"/category/" + categoryRef.current[rowIdx].id}>
-            <FontAwesomeIcon icon={faEdit} className="action mr-2"></FontAwesomeIcon>
-            </Link> */}
-              <LinkContainer
-                to={"/category/" + categoryRef.current[rowIdx].id}
-              >
+              <LinkContainer to={"/category/" + categoryRef.current[rowIdx].id}>
                 <FontAwesomeIcon icon={faEdit} className="action mr-2">
                   <Nav.Item>
                     <Nav.Link href="/" />
@@ -149,7 +120,7 @@ const CategoryList = (props) => {
 
   return (
     <div className="list row">
-      <div className="col-md-8">
+      {/* <div className="col-md-8">
         <div className="input-group mb-3">
           <input
             type="text"
@@ -168,7 +139,7 @@ const CategoryList = (props) => {
             </button>
           </div>
         </div>
-      </div>
+      </div> */}
       <div className="col-md-12 list">
         <table
           className="table table-striped table-bordered"

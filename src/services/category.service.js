@@ -17,7 +17,7 @@ const getAll = () => {
   };
   
   const remove = id => {
-    return http.delete(`/category/delete${id}`);
+    return http.delete(`/category/delete/${id}`);
   };
 
 
