@@ -43,7 +43,7 @@ const AddCategory = () => {
   return (
     <Container>
         <h1 style={{textAlign: "center", marginTop: "5%"}}> Create New Category</h1>
-        <div className="addCategoryForm">
+        <div className="categoryForm">
           {submitted ? (
             <div>
               <h1 style={{textAlign: "center", marginTop: "5%"}}>You added category successfully!</h1>

@@ -12,6 +12,7 @@ import NotFound from "./components/NotFound";
 import Form from "./components/Form";
 import Profile from "./components/Profile";
 import AddCategory from "./components/AddCategory"
+import Category from "./components/Category"
 
 import BoardUser from "./components/BoardUser";
 import BoardAdmin from "./components/BoardAdmin";
@@ -169,6 +170,7 @@ function App() {
         <Route path="/user" component={BoardUser} />
         <Route path="/admin" component={BoardAdmin} />
         <Route exact path="/addCategory" component={AddCategory} />
+        <Route path="/category/:id" component={Category} />
         <Route component={NotFound} />
       </Switch>
       <Footer />
