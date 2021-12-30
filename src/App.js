@@ -1,5 +1,5 @@
 import "./App.css";
-import React, { useState, useEffect} from "react";
+import React, { useState, useEffect, useCallback} from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
@@ -58,6 +58,10 @@ function App() {
     });
   }, [dispatch]);
 
+  const logOut = useCallback(() => {
+    dispatch(logout());
+  }, [dispatch]);
+
   useEffect(() => {
     if (currentUser) {
       setShowAdminBoard(currentUser.roles.includes("ROLE_ADMIN"));
@@ -74,9 +78,6 @@ function App() {
     };
   }, [currentUser, logOut]);
 
-  const logOut = () => {
-    dispatch(logout());
-  };
   return (
     <Router history={history}>
       {/* <Navigationbar /> */}

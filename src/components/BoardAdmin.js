@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 
 import UserService from "../services/user.service";
 import EventBus from "../common/EventBus";
-import ProductList from "./ProductList";
 import CategoryList from "./CategoryList";
 const BoardUser = () => {
   const [content, setContent] = useState("");
