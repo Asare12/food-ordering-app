@@ -17,6 +17,7 @@ import Category from "./components/Category"
 import BoardUser from "./components/BoardUser";
 import BoardAdmin from "./components/BoardAdmin";
 
+import EventBus from "./common/EventBus";
 import { logout } from "./actions/auth";
 import { clearMessage } from "./actions/message";
 import { history } from "./helpers/history";
@@ -28,6 +29,7 @@ import NavDropdown from 'react-bootstrap/NavDropdown'
 import "./componentsCss/Navigationbar.css";
 
 import { LinkContainer } from "react-router-bootstrap";
+import ProductList from "./components/ProductList";
 
 
 function App() {
@@ -59,8 +61,18 @@ function App() {
   useEffect(() => {
     if (currentUser) {
       setShowAdminBoard(currentUser.roles.includes("ROLE_ADMIN"));
+    } else {
+      setShowAdminBoard(false);
     }
-  }, [currentUser]);
+
+    EventBus.on("logout", () => {
+      logOut();
+    });
+
+    return () => {
+      EventBus.remove("logout");
+    };
+  }, [currentUser, logOut]);
 
   const logOut = () => {
     dispatch(logout());
@@ -171,6 +183,7 @@ function App() {
         <Route path="/admin" component={BoardAdmin} />
         <Route exact path="/addCategory" component={AddCategory} />
         <Route path="/category/:id" component={Category} />
+        <Route path="/:id/products" component={ProductList} />
         <Route component={NotFound} />
       </Switch>
       <Footer />
