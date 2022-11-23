@@ -1,7 +1,7 @@
 import http from "../http-common";
 
 const getAll = () => {
-    return http.get("/category");
+    return http.get("/categories");
   };
   
   const get = id => {
