@@ -78,15 +78,15 @@ import {
 //     }
 //   };
   
-//   export const findTutorialsByTitle = (title) => async (dispatch) => {
-//     try {
-//       const res = await ProductDataService.findByTitle(title);
+  export const getAllProductsByCategoryId = (id, param) => async (dispatch) => {
+    try {
+      const res = await ProductDataService.getProductsByCategoryId(id, param);
   
-//       dispatch({
-//         type: RETRIEVE_TUTORIALS,
-//         payload: res.data,
-//       });
-//     } catch (err) {
-//       console.log(err);
-//     }
-//   };
+      dispatch({
+        type: RETRIEVE_TUTORIALS,
+        payload: res.data,
+      });
+    } catch (err) {
+      console.log(err);
+    }
+  };

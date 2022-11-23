@@ -30,12 +30,10 @@ const useForm = (callback, validate) => {
     setErrors(validate(values));
     dispatch(register(values.name, values.email, values.password))
     .then(() => {
-      console.log("submitted form");
       setIsSubmitting(true);
       window.location.reload();
     })        
     .catch(() => {
-      console.log("couldnt submit form");
       setIsSubmitting(false);
     });
   };

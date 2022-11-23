@@ -1,28 +1,24 @@
 import http from "../http-common";
 
-const getAll = () => {
-    return http.get("/product");
+  const getProductsByCategoryId = (id, param) => {
+    console.log('getAllProductsByCategoryId', id);
+    return http.get(`/category/${id}/products`, param);
   };
   
-  const get = id => {
-    return http.get(`/product/${id}`);
+  const create = (categoryID, data) => {
+    return http.post(`/category/${categoryID}/product`, data);
   };
   
-  const create = data => {
-    return http.post("/product", data);
-  };
-  
-  const update = (id, data) => {
-    return http.put(`/product/update/${id}`, data);
+  const update = (categoryID,productID, data) => {
+    return http.put(`/${categoryID}/updateProduct/${productID}`, data);
   }; 
-  const remove = id => {
-    return http.delete(`/product/delete${id}`);
+  const remove = (categoryID,productID) => {
+    return http.delete(`/${categoryID}/deleteProduct${productID}`);
   };
 
 
 const ProductDataService = {
-    getAll,
-    get,
+    getProductsByCategoryId,
     create,
     update,
     remove

@@ -5,6 +5,7 @@ import Nav from "react-bootstrap/Nav";
 import CategoryDataService from "../services/category.service";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEdit, faTrash } from "@fortawesome/free-solid-svg-icons";
+import ProductList from "./ProductList";
 
 const CategoryList = (props) => {
   const [categories, setCategories] = useState([]);
@@ -74,6 +75,12 @@ const CategoryList = (props) => {
       });
   };
 
+  const viewProductList = (rowIndex) => {
+    const id = categoryRef.current[rowIndex].id;
+
+    <ProductList id={id}/>
+  };
+
   const columns = useMemo(
     () => [
       {
@@ -85,9 +92,14 @@ const CategoryList = (props) => {
         accessor: "name",
       },
       {
+        Header: "Product",
+        accessor: "products",
+      },
+      {
         Header: "Actions",
         accessor: "actions",
         Cell: (props) => {
+          console.log("propsss",props);
           const rowIdx = props.row.id;
           return (
             <div>
@@ -104,6 +116,10 @@ const CategoryList = (props) => {
                   className="action"
                 ></FontAwesomeIcon>
               </span>
+              {/* <LinkContainer to={"/category/" + categoryRef.current[rowIdx].id + "/product"}> */}
+              <LinkContainer to={categoryRef.current[rowIdx].id + "/products"}>
+              <button onClick={viewProductList(rowIdx)} className="btn btn-md btn-primary">View product </button>
+              </LinkContainer>
             </div>
           );
         },
